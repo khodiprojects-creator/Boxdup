@@ -1,6 +1,7 @@
 import express from 'express';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
+import { createServer as createViteServer } from 'vite';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -17,6 +18,13 @@ if (process.env.NODE_ENV === 'production') {
   app.get('*', (_req, res) => {
     res.sendFile(join(distPath, 'index.html'));
   });
+} else {
+  const vite = await createViteServer({
+    server: { middlewareMode: true },
+    appType: 'spa',
+  });
+
+  app.use(vite.middlewares);
 }
 
 app.listen(PORT, () => {
