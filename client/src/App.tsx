@@ -1,22 +1,22 @@
 import React from 'react';
+import Hero from './components/Hero';
+import Services from './components/Services';
+import PricingTable from './components/PricingTable';
+import ReservationForm from './components/ReservationForm';
+import Footer from './components/Footer';
 
 function App() {
   return (
     <div style={{
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
       minHeight: '100vh',
-      fontFamily: 'system-ui, -apple-system, sans-serif'
+      display: 'flex',
+      flexDirection: 'column'
     }}>
-      <div style={{ textAlign: 'center' }}>
-        <h1 style={{ fontSize: '3rem', marginBottom: '1rem', color: '#333' }}>
-          Welcome
-        </h1>
-        <p style={{ fontSize: '1.25rem', color: '#666' }}>
-          Your app is ready to build
-        </p>
-      </div>
+      <Hero />
+      <Services />
+      <PricingTable />
+      <ReservationForm />
+      <Footer />
     </div>
   );
 }
